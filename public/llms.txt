@@ -1,0 +1,12 @@
+# FlowBoard
+
+> FlowBoard is a simple Kanban board for tracking work from backlog to done.
+
+## What it does
+- Create cards with a title, assignee, priority (High, Medium, Low, None) and due date
+- Organize cards in four columns: Backlog, In Progress, In Review, Done
+- Drag cards between columns, or move them with the keyboard (Alt + arrow keys)
+- Each person sees only their own cards
+
+## Access
+FlowBoard requires an account (email and password). The board is private; the sign-in page is the only public page.

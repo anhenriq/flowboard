@@ -1,0 +1,16 @@
+# Only the sign-in page is public; the board itself needs an account.
+User-agent: *
+Allow: /
+
+# AI crawlers are welcome to read the public page
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /

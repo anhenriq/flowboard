@@ -1,0 +1,45 @@
+name: CI
+
+# Runs on every push and pull request to main. Tests use an in-memory fake of Supabase,
+# so this workflow needs no secrets and never touches a real database.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+# a newer push to the same branch makes an older, still-running check pointless
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm test
+
+      # type-checks the whole project (tests included) and proves the production build works
+      - name: Build
+        run: npm run build
+        env:
+          # placeholders: the build only needs the variables to exist, not to be real
+          VITE_SUPABASE_URL: https://placeholder.supabase.co
+          VITE_SUPABASE_PUBLISHABLE_KEY: placeholder-publishable-key
