@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Logo } from './Logo'
 import { supabase } from './supabase'
 
 export function AuthForm() {
@@ -30,6 +31,7 @@ export function AuthForm() {
   return (
     <div className="backdrop auth">
       <form className="modal" onSubmit={submit}>
+        <Logo large />
         <h1>{mode === 'signin' ? 'Sign in to FlowBoard' : 'Create your account'}</h1>
 
         <label>

@@ -66,7 +66,16 @@ export function Column({ id, title, cards, draggingId, onDragStart, onDragEnd, o
           </div>
         ))}
         {over && overBefore === null && draggingId && dropLine}
-        {cards.length === 0 && !over && <p className="empty">No cards here yet</p>}
+        {cards.length === 0 && !over && (
+          <div className="empty">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <path d="m17 8-5-5-5 5" />
+              <path d="M12 3v12" />
+            </svg>
+            <p>Drop a card here or add one below</p>
+          </div>
+        )}
       </div>
 
       <button className="add" onClick={onAdd}>

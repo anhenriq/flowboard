@@ -88,7 +88,7 @@ export function CardModal({ card, status: initialStatus, onSave, onDelete, onClo
     <div className="backdrop" onMouseDown={e => e.target === e.currentTarget && requestClose()}>
       <form
         ref={formRef}
-        className="modal"
+        className="modal card-form"
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"

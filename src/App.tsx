@@ -1,5 +1,6 @@
 import { AuthForm } from './AuthForm'
 import { Board } from './Board'
+import { Logo } from './Logo'
 import { supabase } from './supabase'
 import { useSession } from './useSession'
 
@@ -13,13 +14,17 @@ export default function App() {
     <div className="app">
       <a className="skip" href="#board">Skip to board</a>
       <div className="topbar">
+        <Logo />
         <h1>FlowBoard</h1>
         <span className="spacer" />
+        <span className="avatar" aria-hidden="true">{session.user.email?.[0]}</span>
         <span className="user">{session.user.email}</span>
         <button onClick={() => supabase.auth.signOut()}>Sign out</button>
       </div>
-      {/* keyed by user so a different account never sees the previous one's cards */}
-      <Board key={session.user.id} />
+      <div className="content">
+        {/* keyed by user so a different account never sees the previous one's cards */}
+        <Board key={session.user.id} />
+      </div>
     </div>
   )
 }

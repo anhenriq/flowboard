@@ -30,7 +30,7 @@ describe('first run', () => {
   it('welcomes a new user and creates their first card in Backlog', async () => {
     const { user } = await setup()
     expect(screen.getByRole('heading', { name: 'Welcome to FlowBoard' })).toBeInTheDocument()
-    expect(within(column('Backlog')).getByText('No cards here yet')).toBeInTheDocument()
+    expect(within(column('Backlog')).getByText('Drop a card here or add one below')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Create your first card' }))
     await user.type(screen.getByRole('textbox', { name: /^title/i }), 'My first card')
